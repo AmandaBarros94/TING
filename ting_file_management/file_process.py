@@ -2,7 +2,6 @@ from .file_management import txt_importer
 import sys
 
 
-
 def process(path_file, instance):
     for index in range(len(instance)):
         if instance.search(index)["nome_do_arquivo"] == path_file:
@@ -12,7 +11,7 @@ def process(path_file, instance):
     file_length = len(new_file)
     new_data = {
         "nome_do_arquivo": path_file,
-        "qtd_linhas": file_length ,
+        "qtd_linhas": file_length,
         "linhas_do_arquivo": new_file,
     }
     sys.stdout.write(str(new_data))
@@ -28,4 +27,8 @@ def remove(instance):
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    try:
+        valid = instance.search(position)
+        sys.stdout.write(str(valid))
+    except IndexError:
+        sys.stderr.write("Posição inválida\n")

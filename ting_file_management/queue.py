@@ -19,3 +19,4 @@ class Queue:
         if index < 0 or index > row:
             raise IndexError
         return self.line[index]
+        
